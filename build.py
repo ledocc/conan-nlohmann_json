@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     filtered_items = []
     for settings, options, env_vars, build_requires, reference in builder.items:
-        settings["cppstd"] = "14"
+        settings["compiler.cppstd"] = "14"
         if settings["compiler"] == "gcc":
             settings["compiler.libcxx"] = "libstdc++11"
         elif ( settings["compiler"] == "clang" ) and ( "compiler.libcxx" in settings ) and ( settings["compiler.libcxx"] == "libstdc++" ):
