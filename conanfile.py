@@ -39,13 +39,8 @@ class NlohmannjsonConan(ConanFile):
 
 
     def _configure_cmake(self):
-        cmake = CMake(self)
+        cmake = CMake(self, set_cmake_flags=True)
         cmake.verbose=True
-
-        if platform.system() != "Windows":
-            cmake.definitions["CMAKE_CXX_STANDARD"] = cmake.definitions["CONAN_CMAKE_CXX_STANDARD"]
-            cmake.definitions["CMAKE_CXX_EXTENSIONS"] = cmake.definitions["CONAN_CMAKE_CXX_EXTENSIONS"]
-
         cmake.definitions["CTEST_TEST_TIMEOUT"] = "3000"
         cmake.configure(source_dir="../json", build_dir="build")
 

@@ -10,13 +10,8 @@ class NlohmannjsonTestConan(ConanFile):
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self)
-        # Current dir is "test_package/build/<build_id>" and CMakeLists.txt is
-        # in "test_package"
+        cmake = CMake( self, set_cmake_flags=True )
         cmake.verbose=True
-        if platform.system() != "Windows":
-            cmake.definitions["CMAKE_CXX_STANDARD"] = cmake.definitions["CONAN_CMAKE_CXX_STANDARD"]
-            cmake.definitions["CMAKE_CXX_EXTENSIONS"] = cmake.definitions["CONAN_CMAKE_CXX_EXTENSIONS"]
         cmake.configure()
         cmake.build()
 
