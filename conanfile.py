@@ -14,7 +14,7 @@ class NlohmannjsonConan(ConanFile):
     url = "https://github.com/nlohmann/json"
     description = "JSON for Modern C++"
     topics = ("json", "c++")
-    settings = "os", "arch", "compiler", "build_type", "cppstd"
+    settings = "os", "arch", "compiler", "build_type"
 
 
 
