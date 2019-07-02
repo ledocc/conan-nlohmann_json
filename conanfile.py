@@ -16,7 +16,7 @@ class NlohmannjsonConan(ConanFile):
     topics = ("json", "c++")
     settings = "os", "arch", "compiler", "build_type"
 
-
+    build_requires = "cmake_installer/3.14.5@conan/stable"
 
     def source(self):
         dir_name = "json-"+self.version
