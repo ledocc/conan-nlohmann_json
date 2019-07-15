@@ -16,7 +16,8 @@ class NlohmannjsonConan(ConanFile):
     topics = ("json", "c++")
     settings = "os", "arch", "compiler", "build_type"
 
-    build_requires = "cmake_installer/3.14.5@conan/stable"
+    build_requires = (("cmake_installer/3.14.5@conan/stable"),
+                      ("ninja_installer/1.9.0@bincrafters/stable" ))
 
     def source(self):
         dir_name = "json-"+self.version
@@ -40,6 +41,7 @@ class NlohmannjsonConan(ConanFile):
 
     def _configure_cmake(self):
         cmake = CMake(self, set_cmake_flags=True)
+        cmake.generator="Ninja"
         cmake.verbose=True
         cmake.configure(source_dir="../json", build_dir="build")
 
