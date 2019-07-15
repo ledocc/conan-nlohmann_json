@@ -30,10 +30,7 @@ class NlohmannjsonConan(ConanFile):
     def build(self):
         cmake = self._configure_cmake()
         cmake.build()
-
-        env_test = { "CTEST_TEST_TIMEOUT": "3000" }
-        with tools.environment_append(env_test):
-            cmake.test(output_on_failure=True)
+        self.run("ctest --output_on_failure --timeout=3000", cwd=cmake.build_folder)
 
     def package(self):
         cmake = self._configure_cmake()
