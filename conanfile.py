@@ -8,25 +8,23 @@ import shutil
 
 class NlohmannjsonConan(ConanFile):
     name = "nlohmann_json"
-    version = "3.5.0"
+    version = tools.load("version.txt")
     license = "MIT License"
     author = "David Callu - callu.david at gmail.com"
     url = "https://github.com/nlohmann/json"
     description = "JSON for Modern C++"
     topics = ("json", "c++")
     settings = "os", "arch", "compiler", "build_type"
-
+    homepage = "https://github.com/nlohmann/json"
     build_requires = (("cmake_installer/3.14.5@conan/stable"),
                       ("ninja_installer/1.9.0@bincrafters/stable" ))
 
+    exports = ("version.txt")
+
     def source(self):
-        dir_name = "json-"+self.version
         archive_name = "v"+self.version+".tar.gz"
-        tools.download( "https://github.com/nlohmann/json/archive/"+archive_name, archive_name )
-        tools.check_sha256( archive_name, "e0b1fc6cc6ca05706cce99118a87aca5248bd9db3113e703023d23f044995c1d")
-        tools.untargz( archive_name )
-        shutil.move( dir_name, "json" )
-        os.unlink( archive_name )
+        tools.get( self.homepage+"/archive/"+archive_name,
+                   sha256="80c45b090e40bf3d7a7f2a6e9f36206d3ff710acfa8d8cc1f8c763bb3075e22e")
 
     def build(self):
         cmake = self._configure_cmake()
@@ -43,6 +41,6 @@ class NlohmannjsonConan(ConanFile):
         cmake = CMake(self, set_cmake_flags=True)
         cmake.generator="Ninja"
         cmake.verbose=True
-        cmake.configure(source_dir="../json", build_dir="build")
+        cmake.configure(source_dir="../json-"+self.version, build_dir="build")
 
         return cmake
