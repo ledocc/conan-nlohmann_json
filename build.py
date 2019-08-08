@@ -15,10 +15,12 @@ if __name__ == "__main__":
 
     filtered_items = []
     for settings, options, env_vars, build_requires, reference in builder.items:
-        settings["compiler.cppstd"] = "11"
+        if settings["compiler"] != "Visual Studio":
+            settings["compiler.cppstd"] = "11"
         if settings["compiler"] == "gcc":
             settings["compiler.libcxx"] = "libstdc++11"
         elif ( settings["compiler"] == "clang" ) and ( "compiler.libcxx" in settings ) and ( settings["compiler.libcxx"] == "libstdc++" ):
+            settings["compiler.cppstd"] = "11"
             settings["compiler.libcxx"] = "libstdc++11"
         filtered_items.append([settings, options, env_vars, build_requires, reference])
     builder.items = filtered_items
