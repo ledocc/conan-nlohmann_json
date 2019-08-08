@@ -29,6 +29,11 @@ class NlohmannjsonConan(ConanFile):
     def build(self):
         cmake = self._configure_cmake()
         cmake.build()
+
+        if tools.cross_building(self.settings):
+            self.output.warn("Skipping run cross built package")
+            return
+
         self.run("ctest --output_on_failure --timeout=3000", cwd=cmake.build_folder)
 
     def package(self):

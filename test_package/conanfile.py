@@ -21,6 +21,9 @@ class NlohmannjsonTestConan(ConanFile):
         self.copy('*.so*', dst='bin', src='lib')
 
     def test(self):
-        if not tools.cross_building(self.settings):
-            os.chdir("bin")
-            self.run(".%sexample" % os.sep)
+        if tools.cross_building(self.settings):
+            self.output.warn("Skipping run cross built package")
+            return
+
+        os.chdir("bin")
+        self.run(".%sexample" % os.sep)
