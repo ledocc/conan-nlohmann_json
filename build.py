@@ -1,12 +1,14 @@
 from cpt.packager import ConanMultiPackager
+from conans import tools
 import platform
 
 
 
 if __name__ == "__main__":
     builder = ConanMultiPackager(
-        reference = "nlohmann_json/"+tools.load("version.txt")
-        channel = "testing"
+        username = "ledocc",
+        reference = "nlohmann_json/"+tools.load("version.txt"),
+        channel = "testing",
         stable_branch_pattern = "release/*"
     )
     builder.add_common_builds(pure_c=False)
