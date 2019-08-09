@@ -1,6 +1,5 @@
 from cpt.packager import ConanMultiPackager
 from conans import tools
-import platform
 
 
 

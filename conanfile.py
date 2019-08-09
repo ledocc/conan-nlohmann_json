@@ -1,10 +1,5 @@
 from conans import ConanFile, tools, CMake
 
-import os
-import platform
-import shutil
-
-
 
 class NlohmannjsonConan(ConanFile):
     name = "nlohmann_json"
