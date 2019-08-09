@@ -1,6 +1,6 @@
 [![Download](https://api.bintray.com/packages/ledocc/public-conan/nlohmann_json%3Aledocc/images/download.svg) ](https://bintray.com/ledocc/public-conan/nlohmann_json%3Aledocc/_latestVersion)
 [![Build Status Travis](https://travis-ci.org/ledocc/conan-nlohmann_json.svg) ](https://travis-ci.org/ledocc/conan-nlohmann_json)
-[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/ledocc/conan-nlohmann-json?svg=true) ](https://ci.appveyor.com/project/ledocc/conan-nlohmann-json)
+[![Build Status AppVeyor](https://ci.appveyor.com/api/projects/status/github/ledocc/conan-nlohmann_json?svg=true) ](https://ci.appveyor.com/project/ledocc/conan-nlohmann-json)
 
 ## Conan package recipe for *nlohmann_json*
 
